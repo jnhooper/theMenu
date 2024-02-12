@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// import {OptionList} from '../../components/OptionList.tsx'
+import {MovieWrapper} from '../../components/movies/MovieWrapper.tsx'
+import {movieStore, removeOption, addOption, localStorageKey} from '../../stores/movieStore.ts'
+---
+
+<BaseLayout>
+  <MovieWrapper client:load/>
+</BaseLayout>
+

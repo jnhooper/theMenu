@@ -1,0 +1,44 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+  --light-color: #e7c296;
+  --dark-color: #29344b;
+  --danger-color: #f01f69;
+  cursor: pointer;
+  button {
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
+  }
+}
+
+.edit {
+  label {
+    > div {
+      color: var(--light-color);
+      padding: 0 4px;
+      background-color: var(--dark-color);
+      display: inline-flex;
+    }
+    input {
+      color: var(--dark-color);
+    }
+  }
+  button {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+  }
+}
+.img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.remove {
+  background-color: var(--danger-color);
+  color: var(--dark-color);
+  position: absolute;
+  top: 34px;
+  right: 0;
+}

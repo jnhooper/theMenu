@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {BreakfastWrapper} from '../../components/breakfast/BreakfastWrapper.tsx'
+import {MovieWrapper} from '../../components/movies/MovieWrapper.tsx'
+---
+
+<BaseLayout>
+  <section>
+    <h2>Breakfast Menu</h2>
+    <BreakfastWrapper client:load edit={true}/>
+  </section>
+  <section>
+    <h2>Movie Menu</h2>
+    <MovieWrapper client:load edit={true}/>
+  </section>
+</BaseLayout>
