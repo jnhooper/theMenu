@@ -88,7 +88,11 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
         }
       : {};
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${
+        !formMode && hasHref ? styles.linkWrapper : ""
+      }`}
+    >
       <WrapperName
         className={`postcard-article ${formMode ? styles.edit : ""} ${
           styles.wrapper
@@ -124,14 +128,18 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
                   defaultValue={edit ? desc : ""}
                 />
               </label>
-              <label>
-                <div>link</div>
-                <input
-                  name="href"
-                  type="text"
-                  defaultValue={edit ? href : ""}
-                />
-              </label>
+              {hasHref ? (
+                <>
+                  <label>
+                    <div>link</div>
+                    <input
+                      name="href"
+                      type="text"
+                      defaultValue={edit ? href : ""}
+                    />
+                  </label>
+                </>
+              ) : null}
               <label>
                 <div>image</div>
                 <input name="img" type="text" defaultValue={edit ? img : ""} />
