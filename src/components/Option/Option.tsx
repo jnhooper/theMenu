@@ -115,7 +115,7 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
 "
         >
           {edit || create ? (
-            <div>
+            <div className={styles.labelWrapper}>
               <label>
                 <div>name</div>
                 <input name="name" type="text" defaultValue={name} />

@@ -51,6 +51,7 @@ export const OptionList = <T extends OptionType>(props: OptionListProps<T>) => {
         <li>
           <Option
             create
+            hasHref={!!hasHref}
             addOption={addOption}
             name={"New Option"}
             desc={"Description"}
