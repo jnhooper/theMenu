@@ -14,22 +14,26 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   // Site Information
-  site: "https://visvrs.vercel.app",
+  site: "https://jnhooper.github.io",
+  base: "/theMenu",
   trailingSlash: "never",
   prefetch: {
-    prefetchAll: true
+    prefetchAll: true,
   },
   // Markdown Configuration
   markdown: {
     // Using custom Remark plugin to get modified time
-    remarkPlugins: [remarkModifiedTime]
+    remarkPlugins: [remarkModifiedTime],
   },
   // Third-party Integrations
   integrations: [
-  // Tailwind CSS for styling
-  tailwind(),
-  // Sitemap generator
-  sitemap(),
-  // MDX support
-  mdx(), lit(), react()]
+    // Tailwind CSS for styling
+    tailwind(),
+    // Sitemap generator
+    sitemap(),
+    // MDX support
+    mdx(),
+    lit(),
+    react(),
+  ],
 });
