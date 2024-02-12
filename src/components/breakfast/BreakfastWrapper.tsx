@@ -17,9 +17,16 @@ interface BreakfastWrapperProps {
 export const BreakfastWrapper = (props: BreakfastWrapperProps) => {
   const { edit } = props;
   const result = useStore(breakfastMenu);
+  const showError = (!result || result.length === 0) && !edit;
   return (
     <div>
-      {result && result.length > 0 ? (
+      <h1>Breakfast Menu</h1>
+      {showError ? (
+        <div>
+          <h2>OOPS! Looks like there's no breakfast available</h2>
+          <p>Ask a parent to contact our admin to add some food to the menu</p>
+        </div>
+      ) : (
         <OptionList
           edit={!!edit}
           options={result}
@@ -27,11 +34,6 @@ export const BreakfastWrapper = (props: BreakfastWrapperProps) => {
           removeOption={removeOption}
           editOption={editOption}
         />
-      ) : (
-        <div>
-          <h2>OOPS! Looks like there's no breakfast available</h2>
-          <p>Ask a parent to contact our admin to add some food to the menu</p>
-        </div>
       )}
     </div>
   );

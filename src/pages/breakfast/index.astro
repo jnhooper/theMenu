@@ -1,59 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import {atom} from 'nanoStores'
-// import {OptionList} from '../../components/OptionList.tsx'
 import {BreakfastWrapper} from '../../components/breakfast/BreakfastWrapper.tsx'
-import { breakfastMenu, removeOption, addOption, localStorageKey} from '../../stores/breakfastStore'
-// import {EditOption} from '../../components/EditOption.ts'
-// import {OptionList} from '../../components/OptionList.lit'
-// console.log(EditOption)
-console.log('menu', breakfastMenu)
 ---
 
 <BaseLayout>
-  <div>
-    hey
-  </div>
-  <button type="button" class='add'>
-  add food item
-  </button>
-  <br/>
-  <button class='clear'>
-    clear cache
-  </button>
   <BreakfastWrapper client:load/>
 </BaseLayout>
 
-<script>
-import { breakfastMenu, removeOption, addOption, localStorageKey} from '../../stores/breakfastStore'
-console.log(window)
-window[localStorageKey]= {
-menu: breakfastMenu,
-  removeOption,
-  addOption
-}
-
-
-
-console.log(breakfastMenu.get())
-// console.log('breakfast', breakfastStore)
-document.querySelector('button.add').addEventListener('click', ()=> {
-  addOption({
-    name: 'oatmeal',
-    img: 'https://www.pcrm.org/sites/default/files/2021-05/cinnamon-oatmeal_0.jpg', 
-    desc: 'yummy'
-  })
-  console.log(breakfastMenu.get())
-})
-document.querySelector('button.clear').addEventListener('click', ()=> {
-  removeOption('oatmeal')
-  console.log(breakfastMenu.get())
-  // window.localStorage.removeItem(localStorageKey)
-})
-//   console.log(
-//     document.querySelector('option-list'),
-//   breakfastMenu
-//   )
-// document.querySelector('option-list').setAttribute('store', JSON.stringify(breakfastMenu))
-
-</script>

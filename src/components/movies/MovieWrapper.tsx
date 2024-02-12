@@ -17,7 +17,6 @@ interface MovieWrapperProps {
 export const MovieWrapper = (props: MovieWrapperProps) => {
   const { edit } = props;
   const result = useStore(movieMenu);
-  console.log(result);
   const showError = (!result || result.length === 0) && !edit;
   return (
     <div>
