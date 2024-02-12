@@ -6,23 +6,13 @@
     "useDefineForClassFields": false,
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/components/*": [
-        "src/components/*.astro"
-      ],
-      "@/layouts/*": [
-        "src/layouts/*.astro"
-      ],
-      "@/utils": [
-        "src/utils/*.mjs"
-      ]
+      "src/*": ["src/*"],
+      "@/components/*": ["src/components/*.astro"],
+      "@/layouts/*": ["src/layouts/*.astro"],
+      "@/utils": ["src/utils/*.mjs"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   },
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".vscode",
-    "dist"
-  ]
+  "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }
