@@ -5,7 +5,7 @@ import {
   editOption,
   removeOption,
 } from "../../stores/breakfastStore";
-import { OptionList } from "src/components/OptionList";
+import { OptionList } from "../../components/OptionList";
 
 interface BreakfastWrapperProps {
   /**
