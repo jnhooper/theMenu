@@ -1,6 +1,7 @@
 import { persistentAtom } from "@nanostores/persistent";
 import { action } from "nanostores";
 import { type FoodItem } from "./foodItem";
+import { hideAction } from "./option";
 
 export const localStorageKey = "the_breakfast_menu";
 
@@ -29,6 +30,8 @@ export const removeOption = action(
     return store.get();
   }
 );
+
+export const hideOption = hideAction(breakfastMenu);
 
 export const editOption = action(
   breakfastMenu,

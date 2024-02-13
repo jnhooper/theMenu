@@ -1,7 +1,7 @@
-import { type FormEvent } from "react";
+import { type FormEvent, useContext } from "react";
 import { type OptionType } from "src/stores/option";
 import styles from "./styles.module.scss";
-import type { ZodObject } from "astro/zod";
+import { ActionContext } from "src/context/ActionContext";
 
 export interface OptionProps<Option> {
   /*
@@ -39,9 +39,12 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
     addOption,
     img,
     create,
+    isHidden,
     href,
     hasHref,
   } = props;
+  const context = useContext(ActionContext);
+  console.log(context);
   const formMode = edit || create;
   const WrapperName = formMode ? "form" : "article";
 
@@ -93,6 +96,17 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
         !formMode && hasHref ? styles.linkWrapper : ""
       }`}
     >
+      {edit && context?.hideOption ? (
+        <button
+          className={styles.hide}
+          onClick={() => {
+            console.log("hiding", name);
+            context.hideOption(name, !isHidden);
+          }}
+        >
+          {isHidden ? "show" : "hide"}
+        </button>
+      ) : null}
       <WrapperName
         className={`postcard-article ${formMode ? styles.edit : ""} ${
           styles.wrapper
@@ -107,7 +121,7 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
             width={672}
             height={378}
             sizes="(max-width: 488px) 488px, 672px"
-            className={styles.img}
+            className={`${styles.img} ${isHidden ? styles.hiddenImg : ""}`}
           />
         </div>
         <div

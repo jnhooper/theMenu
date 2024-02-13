@@ -28,16 +28,20 @@ interface OptionListProps<T> {
 
 export const OptionList = <T extends OptionType>(props: OptionListProps<T>) => {
   const { options, edit, editOption, addOption, removeOption, hasHref } = props;
+  const renderedOptions = edit
+    ? options
+    : options.filter((option) => !option.isHidden);
   return (
     <ul
       className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mb-4 ${style.optionList}`}
     >
-      {options.map((option) => (
+      {renderedOptions.map((option) => (
         <li>
           <Option
             hasHref={!!hasHref}
             href={option.href}
             edit={!!edit}
+            isHidden={option.isHidden}
             editOption={editOption}
             removeOption={removeOption}
             key={option.name}

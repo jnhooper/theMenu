@@ -1,6 +1,7 @@
 import { persistentAtom } from "@nanostores/persistent";
 import { action } from "nanostores";
 import { type EntertainmentItem } from "./entertainment";
+import { hideAction } from "./option";
 
 export const localStorageKey = "the_movie_menu";
 
@@ -22,6 +23,8 @@ export const addOption = action(
     return store.get();
   }
 );
+
+export const hideOption = hideAction(movieMenu);
 
 export const removeOption = action(
   movieMenu,

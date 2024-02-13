@@ -2,10 +2,12 @@ import { useStore } from "@nanostores/react";
 import {
   addOption,
   editOption,
+  hideOption,
   movieMenu,
   removeOption,
 } from "src/stores/movieStore";
 import { OptionList } from "src/components/OptionList";
+import { ActionContextProvider } from "src/context/ActionContext";
 
 interface MovieWrapperProps {
   /**
@@ -27,14 +29,21 @@ export const MovieWrapper = (props: MovieWrapperProps) => {
           <p>Ask a parent to contact our admin to add a movie to watch</p>
         </div>
       ) : (
-        <OptionList
-          hasHref
-          options={result}
+        <ActionContextProvider
           addOption={addOption}
-          removeOption={removeOption}
           editOption={editOption}
-          edit={!!edit}
-        />
+          removeOption={removeOption}
+          hideOption={hideOption}
+        >
+          <OptionList
+            hasHref
+            options={result}
+            addOption={addOption}
+            removeOption={removeOption}
+            editOption={editOption}
+            edit={!!edit}
+          />
+        </ActionContextProvider>
       )}
     </div>
   );

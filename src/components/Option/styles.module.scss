@@ -44,6 +44,7 @@
   height: 100%;
   width: 100%;
   margin-bottom: 0;
+  transition: filter 0.2s ease-in-out;
 }
 
 .remove {
@@ -52,4 +53,16 @@
   position: absolute;
   top: 34px;
   right: 0;
+}
+
+.hide {
+  background-color: #4bd7fb;
+  color: var(--dark-color);
+  position: absolute;
+  top: 34px;
+  left: 0;
+  z-index: 1;
+}
+.hiddenImg {
+  filter: grayscale(80%) blur(3px);
 }
