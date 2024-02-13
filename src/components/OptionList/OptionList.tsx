@@ -13,13 +13,6 @@ interface OptionListProps<T> {
    */
   options: T[];
 
-  /**
-   * add option function. It should be provided from a store.
-   */
-  addOption: OptionProps<T>["addOption"];
-  editOption: OptionProps<T>["editOption"];
-  removeOption: OptionProps<T>["removeOption"];
-
   /*
    * can this option have an href?
    */
@@ -27,7 +20,7 @@ interface OptionListProps<T> {
 }
 
 export const OptionList = <T extends OptionType>(props: OptionListProps<T>) => {
-  const { options, edit, editOption, addOption, removeOption, hasHref } = props;
+  const { options, edit, hasHref } = props;
   const renderedOptions = edit
     ? options
     : options.filter((option) => !option.isHidden);
@@ -42,8 +35,6 @@ export const OptionList = <T extends OptionType>(props: OptionListProps<T>) => {
             href={option.href}
             edit={!!edit}
             isHidden={option.isHidden}
-            editOption={editOption}
-            removeOption={removeOption}
             key={option.name}
             name={option.name}
             desc={option.desc}
@@ -56,7 +47,6 @@ export const OptionList = <T extends OptionType>(props: OptionListProps<T>) => {
           <Option
             create
             hasHref={!!hasHref}
-            addOption={addOption}
             name={"New Option"}
             desc={"Description"}
             img={

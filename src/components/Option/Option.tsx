@@ -16,33 +16,10 @@ export interface OptionProps<Option> {
    * are we in create mode?
    */
   create?: boolean;
-  /**
-   * edit the option.
-   */
-  editOption?: (oldName: string, option: Partial<Option>) => Option[];
-
-  addOption?: (item: Option) => Option[];
-
-  /**
-   * given a name of an option remove it
-   */
-  removeOption?: (name: string) => Option[];
 }
 
 export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
-  const {
-    desc,
-    name,
-    edit,
-    editOption,
-    removeOption,
-    addOption,
-    img,
-    create,
-    isHidden,
-    href,
-    hasHref,
-  } = props;
+  const { desc, name, edit, img, create, isHidden, href, hasHref } = props;
   const context = useContext(ActionContext);
   console.log(context);
   const formMode = edit || create;
@@ -75,10 +52,10 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
             console.log(newHref);
             newOption.href = newHref;
           }
-          if (edit && editOption) {
-            editOption(name, newOption);
-          } else if (create && addOption) {
-            addOption(newOption);
+          if (edit && context?.editOption) {
+            context.editOption(name, newOption);
+          } else if (create && context?.addOption) {
+            context.addOption(newOption);
           }
         },
       }
@@ -174,8 +151,11 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
           )}
         </div>
       </WrapperName>
-      {edit ? (
-        <button className={styles.remove} onClick={() => removeOption(name)}>
+      {edit && context?.removeOption ? (
+        <button
+          className={styles.remove}
+          onClick={() => context.removeOption(name)}
+        >
           remove
         </button>
       ) : null}
