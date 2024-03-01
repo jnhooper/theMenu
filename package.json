@@ -17,7 +17,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
-    "@nanostores/persistent": "^0.9.1",
+    "@nanostores/persistent": "^0.10.1",
     "@nanostores/react": "^0.7.1",
     "@pagefind/default-ui": "^1.0.4",
     "@tailwindcss/typography": "^0.5.10",
