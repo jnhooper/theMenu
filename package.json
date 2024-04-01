@@ -21,7 +21,7 @@
     "@nanostores/react": "^0.7.1",
     "@pagefind/default-ui": "^1.0.4",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/react": "^18.2.55",
+    "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.19",
     "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^4.3.5",
