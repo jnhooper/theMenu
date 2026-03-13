@@ -1,5 +1,4 @@
 import { useStore } from "@nanostores/react";
-import { useContext } from "react";
 import {
   addOption,
   editOption,
@@ -24,7 +23,7 @@ export const MovieWrapper = (props: MovieWrapperProps) => {
   const showError = (!result || result.length === 0) && !edit;
   const showSeed = !showError && result.length === 0;
   return (
-    <div>
+    <div className="text-neutral-50">
       <h1>Movie Menu</h1>
       {showError
         ? (
