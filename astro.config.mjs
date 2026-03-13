@@ -24,19 +24,12 @@ export default defineConfig({
     prefetchAll: true,
   },
 
-  // Markdown Configuration
-  markdown: {
-    // Using custom Remark plugin to get modified time
-    remarkPlugins: [remarkModifiedTime],
-  },
 
   // Third-party Integrations
   integrations: [
     // Sitemap generator
     sitemap(),
     // MDX support
-    mdx(),
-    lit(),
     react(),
   ],
 
