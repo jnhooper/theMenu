@@ -1,5 +1,6 @@
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* @import 'tailwindcss/base'; */
+/* @import 'tailwindcss/components'; */
+/* @import 'tailwindcss/utilities'; */
 
 .postcard-link {
     @apply transition-all ease-in-out duration-500 hover:shadow-2xl rounded overflow-hidden hover:-translate-y-1 hover:scale-105;
