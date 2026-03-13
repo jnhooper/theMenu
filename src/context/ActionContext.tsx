@@ -1,20 +1,31 @@
 import React, { createContext } from "react";
 
-export const ActionContext = createContext<{
-  addOption: Function;
-  editOption: Function;
-  hideOption: Function;
-  removeOption: Function;
-} | null>(null);
+export const ActionContext = createContext<
+  {
+    addOption: Function;
+    editOption: Function;
+    hideOption: Function;
+    removeOption: Function;
+    seedOptions?: Function | undefined;
+  } | null
+>(null);
 type Props = {
   children?: React.ReactNode;
   addOption: Function;
   editOption: Function;
   hideOption: Function;
   removeOption: Function;
+  seedOptions?: Function;
 };
 export const ActionContextProvider: React.FC<Props> = (props: Props) => {
-  const { children, addOption, editOption, hideOption, removeOption } = props;
+  const {
+    children,
+    addOption,
+    editOption,
+    hideOption,
+    removeOption,
+    seedOptions,
+  } = props;
   return (
     <ActionContext.Provider
       value={{
@@ -22,6 +33,7 @@ export const ActionContextProvider: React.FC<Props> = (props: Props) => {
         editOption,
         hideOption,
         removeOption,
+        seedOptions,
       }}
     >
       {children}

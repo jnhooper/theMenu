@@ -2,6 +2,7 @@ import { persistentAtom } from "@nanostores/persistent";
 import { action } from "nanostores";
 import { type EntertainmentItem } from "./entertainment";
 import { hideAction } from "./option";
+import {MOVIE_SEED} from './movieSeedData.ts'
 
 export const localStorageKey = "the_movie_menu";
 
@@ -20,6 +21,16 @@ export const addOption = action(
   (store, movie: EntertainmentItem) => {
     const options = store.get();
     store.set([...options, movie]);
+    return store.get();
+  }
+);
+
+
+export const seedMovies = action(
+  movieMenu,
+  "seed movie",
+  (store) => {
+    store.set(MOVIE_SEED);
     return store.get();
   }
 );

@@ -34,50 +34,48 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
   // }
   const formOptions = formMode
     ? {
-        onSubmit: (e: FormEvent) => {
-          // todo pass <MyFormElements> into formEvent
-          e.preventDefault();
-          const elements = e.currentTarget?.elements;
-          const newName = elements.name.value as string;
-          const newDesc = elements?.desc.value as string;
-          const newImg = elements?.img?.value as string;
-          // do we need special things around href?
-          const newOption = {
-            name: newName,
-            desc: newDesc,
-            img: newImg,
-          } as T;
-          if (hasHref) {
-            const newHref = elements?.href?.value as string;
-            console.log(newHref);
-            newOption.href = newHref;
-          }
-          if (edit && context?.editOption) {
-            context.editOption(name, newOption);
-          } else if (create && context?.addOption) {
-            context.addOption(newOption);
-          }
-        },
-      }
+      onSubmit: (e: FormEvent) => {
+        // todo pass <MyFormElements> into formEvent
+        e.preventDefault();
+        const elements = e.currentTarget?.elements;
+        const newName = elements.name.value as string;
+        const newDesc = elements?.desc.value as string;
+        const newImg = elements?.img?.value as string;
+        // do we need special things around href?
+        const newOption = {
+          name: newName,
+          desc: newDesc,
+          img: newImg,
+        } as T;
+        if (hasHref) {
+          const newHref = elements?.href?.value as string;
+          console.log(newHref);
+          newOption.href = newHref;
+        }
+        if (edit && context?.editOption) {
+          context.editOption(name, newOption);
+        } else if (create && context?.addOption) {
+          context.addOption(newOption);
+        }
+      },
+    }
     : {};
 
   const wrapperClick =
     href && !formMode
       ? {
-          onClick: () => (window.location.href = href),
-        }
+        onClick: () => (window.location.href = href),
+      }
       : {};
   return (
     <div
-      className={`${styles.wrapper} ${
-        !formMode && hasHref ? styles.linkWrapper : ""
-      }`}
+      className={`${styles.wrapper} ${!formMode && hasHref ? styles.linkWrapper : ""
+        }`}
     >
       {edit && context?.hideOption ? (
         <button
           className={styles.hide}
           onClick={() => {
-            console.log("hiding", name);
             context.hideOption(name, !isHidden);
           }}
         >
@@ -85,9 +83,8 @@ export const Option = <T extends OptionType>(props: OptionProps<T> & T) => {
         </button>
       ) : null}
       <WrapperName
-        className={`postcard-article ${formMode ? styles.edit : ""} ${
-          styles.wrapper
-        }`}
+        className={`postcard-article ${formMode ? styles.edit : ""} ${styles.wrapper
+          }`}
         {...formOptions}
         {...wrapperClick}
       >
